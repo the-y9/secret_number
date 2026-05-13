@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    min-height: 100vh;
+    padding: 20px;
+  
+    background:
+      radial-gradient(circle at top left, #1e3a8a 0%, transparent 30%),
+      radial-gradient(circle at bottom right, #7c3aed 0%, transparent 30%),
+      linear-gradient(135deg, #020617, #0f172a, #111827);
+  
+    color: white;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Glow background */
+  body::before,
+  body::after {
+    content: "";
+    position: absolute;
+  
+    width: 320px;
+    height: 320px;
+  
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.25;
+  
+    z-index: 0;
+  }
+  
+  body::before {
+    background: #3b82f6;
+    top: -120px;
+    left: -120px;
+  }
+  
+  body::after {
+    background: #a855f7;
+    bottom: -120px;
+    right: -120px;
+  }
+  
+  .game {
+    position: relative;
+    z-index: 1;
+  
+    width: 100%;
+    max-width: 430px;
+  
+    padding: 45px 35px;
+  
+    text-align: center;
+  
+    border-radius: 28px;
+  
+    background: rgba(255, 255, 255, 0.08);
+  
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  
+    box-shadow:
+      0 0 30px rgba(0, 0, 0, 0.4),
+      0 0 80px rgba(59, 130, 246, 0.12);
+  
+    animation: floatCard 5s ease-in-out infinite;
+  }
+  
+  h1 {
+    margin-bottom: 25px;
+  
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+  
+    background: linear-gradient(
+      90deg,
+      #38bdf8,
+      #818cf8,
+      #c084fc,
+      #f472b6,
+      #38bdf8
+    );
+  
+    background-size: 400% 400%;
+  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    animation: gradientMove 8s ease infinite;
+  }
+  
+  #guess {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: bold;
+  
+    color: #f8fafc;
+  
+    margin: 25px 0;
+  
+    min-height: 50px;
+  
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+  
+  #attempts {
+    margin-top: 22px;
+  
+    font-size: 1rem;
+    color: #cbd5e1;
+  
+    letter-spacing: 0.5px;
+  }
+  
+  .buttons {
+    margin-top: 30px;
+  
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    position: relative;
+    overflow: hidden;
+  
+    flex: 1 1 120px;
+    min-width: 110px;
+  
+    padding: 14px 22px;
+  
+    border: none;
+    border-radius: 14px;
+  
+    font-size: 1rem;
+    font-weight: bold;
+  
+    cursor: pointer;
+  
+    color: white;
+  
+    transition: all 0.25s ease;
+  }
+  
+  /* Button gradients */
+  button:nth-child(1) {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+  }
+  
+  button:nth-child(2) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+  }
+  
+  button:nth-child(3) {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+  }
+  
+  button::before {
+    content: "";
+  
+    position: absolute;
+    top: 0;
+    left: -120%;
+  
+    width: 100%;
+    height: 100%;
+  
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.35),
+      transparent
+    );
+  
+    transition: 0.6s;
+  }
+  
+  button:hover::before {
+    left: 120%;
+  }
+  
+  button:hover {
+    transform: translateY(-4px);
+  
+    box-shadow:
+      0 10px 30px rgba(59, 130, 246, 0.45),
+      0 0 25px rgba(124, 58, 237, 0.35);
+  }
+  
+  button:active {
+    transform: scale(0.96);
+  }
+  
+  /* Floating animation */
+  @keyframes floatCard {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(-8px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* Gradient animation */
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 500px) {
+    .game {
+      padding: 35px 22px;
+      border-radius: 22px;
+    }
+  
+    .buttons {
+      flex-direction: column;
+    }
+  
+    button {
+      width: 100%;
+    }
+  
+    body::before,
+    body::after {
+      width: 220px;
+      height: 220px;
+    }
+  }
