@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Number Guesser</title>
+  <title>Secret Number Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="game">
-    <h1>AI Number Guesser</h1>
+    <h1>Secret Number Game</h1>
 
     <h2 id="guess">Think of a number...</h2>
 
-    <div class="buttons">
-      <button onclick="handleResponse('higher')">Higher</button>
-      <button onclick="handleResponse('lower')">Lower</button>
-      <button onclick="handleResponse('correct')">Correct</button>
-    </div>
+    <button id="start" onclick="startGame()">Start Game</button>
 
-    <p id="attempts"></p>
+
+    <div id="gameControls">
+
+  <div class="buttons">
+    <button onclick="handleResponse('higher')">Higher</button>
+    <button onclick="handleResponse('lower')">Lower</button>
+    <button onclick="handleResponse('correct')">Correct</button>
+  </div>
+
+  <p id="attempts"></p>
+
+  <div class="reset">
+    <button onclick="resetGame()"
+      style="background: linear-gradient(135deg, #0b9ff5, #0677d9);
+             min-width: 50px;
+             flex: 1 1 120px;">
+      ⟳
+    </button>
+  </div>
+
+</div>
+    
   </div>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 </html>
